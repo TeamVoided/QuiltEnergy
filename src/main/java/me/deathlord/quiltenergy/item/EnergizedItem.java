@@ -11,7 +11,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
@@ -35,11 +34,11 @@ public class EnergizedItem extends Item {
 	@Override
 	public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
 		if (Screen.hasShiftDown()) {
-			tooltip.add(new TranslatableText("quilt_energy.energyitem.unit", getUnit(stack).getName()).formatted(Formatting.LIGHT_PURPLE));
-			tooltip.add(new TranslatableText("quilt_energy.energyitem.max_capacity", getMaxCapacity(stack)).formatted(Formatting.LIGHT_PURPLE));
-			tooltip.add(new TranslatableText("quilt_energy.energyitem.stored", getStored(stack)).formatted(Formatting.LIGHT_PURPLE));
+			tooltip.add(Text.translatable("quilt_energy.energyitem.unit", getUnit(stack).getName()).formatted(Formatting.LIGHT_PURPLE));
+			tooltip.add(Text.translatable("quilt_energy.energyitem.max_capacity", getMaxCapacity(stack)).formatted(Formatting.LIGHT_PURPLE));
+			tooltip.add(Text.translatable("quilt_energy.energyitem.stored", getStored(stack)).formatted(Formatting.LIGHT_PURPLE));
 		} else {
-			tooltip.add(new TranslatableText("quilt_energy.item.shift_to_expand").formatted(Formatting.LIGHT_PURPLE));
+			tooltip.add(Text.translatable("quilt_energy.item.shift_to_expand").formatted(Formatting.LIGHT_PURPLE));
 		}
 	}
 
