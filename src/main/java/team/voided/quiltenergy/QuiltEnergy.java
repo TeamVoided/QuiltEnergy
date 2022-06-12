@@ -19,7 +19,6 @@ public class QuiltEnergy implements ModInitializer {
 	public void onInitialize(ModContainer mod) {
 		LOGGER.info("Hello Quilt world from {}!", mod.metadata().name());
 		EnergyUnits.register();
-		Item TEST_ENERGIZED_ITEM = Registry.register(Registry.ITEM, modLoc("test_item"), new EnergizedItem(new Item.Properties(), EnergyUnits.REDSTONE_FLUX, 100, 10));
 	}
 
 	public static ResourceLocation modLoc(String path) {
