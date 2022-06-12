@@ -3,6 +3,7 @@
   "quilt_energy.energyitem.max_capacity": "Max Capacity: %s",
   "quilt_energy.energyitem.stored": "Stored Energy: %s",
   "quilt_energy.item.shift_to_expand": "Press \"Shift\" for additional information!",
-  "quilt_energy.unit.redstone_flux": "Redstone Flux",
-  "quilt_energy.unit.pure_amethyst": "Pure Amethyst"
+  "quilt_energy.unit.redstone_flux": "Redstone Flux (RF)",
+  "quilt_energy.unit.pure_amethyst": "Pure Amethyst (PA)",
+  "quilt_energy.unit.quilt_energy": "Quilt Energy (QE)"
 }
