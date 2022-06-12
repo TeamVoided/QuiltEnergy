@@ -1,9 +1,9 @@
-package me.voided.quiltenergy.energy;
+package team.voided.quiltenergy.energy;
 
-import me.voided.quiltenergy.energy.interaction.EnergyInteractionResult;
-import me.voided.quiltenergy.item.EnergizedItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtCompound;
+import team.voided.quiltenergy.energy.interaction.EnergyInteractionResult;
+import team.voided.quiltenergy.item.EnergizedItem;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.item.ItemStack;
 
 public interface IEnergyContainer {
 	EnergyUnit unit();
@@ -19,8 +19,8 @@ public interface IEnergyContainer {
 	void transferEnergy(IEnergyContainer other, double amount, Operation operation);
 	<T extends EnergizedItem> void transferEnergy(T other, ItemStack stack, double amount, Operation operation);
 
-	void writeNBT(NbtCompound compound, String prefix);
-	void readNBT(NbtCompound compound, String prefix);
+	void writeNBT(CompoundTag compound, String prefix);
+	void readNBT(CompoundTag compound, String prefix);
 	enum Operation {
 		RECEIVE, GIVE
 	}

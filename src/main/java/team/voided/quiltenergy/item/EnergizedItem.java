@@ -1,79 +1,98 @@
-package me.voided.quiltenergy.item;
+package team.voided.quiltenergy.item;
 
-import me.voided.quiltenergy.QuiltEnergy;
-import me.voided.quiltenergy.energy.EnergyUnit;
-import me.voided.quiltenergy.energy.IEnergyContainer;
-import me.voided.quiltenergy.energy.interaction.EnergyInteractionResult;
-import me.voided.quiltenergy.registry.EnergyRegistries;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.item.TooltipContext;
-import net.minecraft.entity.Entity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
-import net.minecraft.util.Identifier;
-import net.minecraft.world.World;
+import team.voided.quiltenergy.QuiltEnergy;
+import team.voided.quiltenergy.client.gui.EnergyBarTooltip;
+import team.voided.quiltenergy.energy.EnergyUnit;
+import team.voided.quiltenergy.energy.IEnergyContainer;
+import team.voided.quiltenergy.energy.interaction.EnergyInteractionResult;
+import team.voided.quiltenergy.registry.EnergyRegistries;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.inventory.tooltip.TooltipComponent;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
+import java.util.Optional;
 
 public class EnergizedItem extends Item {
 	private EnergyUnit unit;
 	private double maxCapacity;
 	private final double preStoredEnergy;
-	private boolean setVars = true;
 
-	public EnergizedItem(Settings settings, EnergyUnit unit, double maxCapacity, double preStoredEnergy) {
-		super(settings);
+	public EnergizedItem(Properties properties, EnergyUnit unit, double maxCapacity, double preStoredEnergy) {
+		super(properties);
 		this.unit = unit;
 		this.maxCapacity = maxCapacity;
 		this.preStoredEnergy = preStoredEnergy;
 	}
 
 	@Override
-	public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+	@ParametersAreNonnullByDefault
+	public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag context) {
 		if (Screen.hasShiftDown()) {
-			tooltip.add(Text.translatable("quilt_energy.energyitem.unit", getUnit(stack).getName()).formatted(Formatting.LIGHT_PURPLE));
-			tooltip.add(Text.translatable("quilt_energy.energyitem.max_capacity", getMaxCapacity(stack)).formatted(Formatting.LIGHT_PURPLE));
-			tooltip.add(Text.translatable("quilt_energy.energyitem.stored", getStored(stack)).formatted(Formatting.LIGHT_PURPLE));
+			tooltip.add(Component.translatable("quilt_energy.energyitem.unit", getUnit(stack).getName()).withStyle(ChatFormatting.LIGHT_PURPLE));
+			tooltip.add(Component.translatable("quilt_energy.energyitem.max_capacity", getMaxCapacity(stack)).withStyle(ChatFormatting.LIGHT_PURPLE));
+			tooltip.add(Component.translatable("quilt_energy.energyitem.stored", getStored(stack)).withStyle(ChatFormatting.LIGHT_PURPLE));
 		} else {
-			tooltip.add(Text.translatable("quilt_energy.item.shift_to_expand").formatted(Formatting.LIGHT_PURPLE));
+			tooltip.add(Component.translatable("quilt_energy.item.shift_to_expand").withStyle(ChatFormatting.LIGHT_PURPLE));
 		}
 	}
 
 	@Override
-	public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-		if (setVars) {
+	@ParametersAreNonnullByDefault
+	public Optional<TooltipComponent> getTooltipImage(ItemStack stack) {
+		return Optional.of(EnergyBarTooltip.fromEnergizedItem(stack));
+	}
+
+	@Override
+	@ParametersAreNonnullByDefault
+	public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean selected) {
+		if (setVars(stack)) {
 			setUnit(stack, unit);
 			setMaxCapacity(stack, maxCapacity);
 			setStored(stack, preStoredEnergy);
-			setVars = false;
+			QuiltEnergy.LOGGER.info("updated vars");
 		}
 	}
 
+	private boolean setVars(ItemStack stack) {
+		boolean ret = !stack.getOrCreateTag().contains("set_vars");
+
+		if (ret) stack.getOrCreateTag().putBoolean("set_vars", false);
+
+		return ret || stack.getOrCreateTag().getBoolean("set_vars");
+	}
+
 	public void setUnit(ItemStack stack, EnergyUnit unit) {
-		stack.getOrCreateNbt().putString("energy_unit", unit.id().toString());
+		stack.getOrCreateTag().putString("energy_unit", unit.id().toString());
 		QuiltEnergy.LOGGER.info(unit.id().toString());
 		this.unit = unit;
 	}
 
 	public EnergyUnit getUnit(ItemStack stack) {
-		String[] split = stack.getOrCreateNbt().getString("energy_unit").split(":");
-		return EnergyRegistries.UNIT.get(new Identifier(split[0], split[1]));
+		String[] split = stack.getOrCreateTag().getString("energy_unit").split(":");
+		return EnergyRegistries.UNIT.get(new ResourceLocation(split[0], split[1]));
 	}
 
 	public void setMaxCapacity(ItemStack stack, double maxCapacity) {
-		stack.getOrCreateNbt().putDouble("max_energy_capacity", maxCapacity);
+		stack.getOrCreateTag().putDouble("max_energy_capacity", maxCapacity);
 		this.maxCapacity = maxCapacity;
 	}
 
 	public double getMaxCapacity(ItemStack stack) {
-		return stack.getOrCreateNbt().getDouble("max_energy_capacity");
+		return stack.getOrCreateTag().getDouble("max_energy_capacity");
 	}
 
 	public double getStored(ItemStack stack) {
-		return stack.getOrCreateNbt().getDouble("stored");
+		return stack.getOrCreateTag().getDouble("stored");
 	}
 
 	public EnergyInteractionResult setStored(ItemStack stack, double amount) {
@@ -81,7 +100,7 @@ public class EnergizedItem extends Item {
 
 		if (amount > getMaxCapacity(stack)) return new EnergyInteractionResult(getUnit(stack), original, original, false);
 
-		stack.getOrCreateNbt().putDouble("stored", amount);
+		stack.getOrCreateTag().putDouble("stored", amount);
 		return new EnergyInteractionResult(getUnit(stack), original, amount, true);
 	}
 

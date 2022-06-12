@@ -1,12 +1,12 @@
-package me.voided.quiltenergy.block.entity;
+package team.voided.quiltenergy.block.entity;
 
-import me.voided.quiltenergy.energy.EnergyContainer;
-import me.voided.quiltenergy.energy.EnergyUnit;
-import me.voided.quiltenergy.energy.IEnergyContainer;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.util.math.BlockPos;
+import team.voided.quiltenergy.energy.EnergyContainer;
+import team.voided.quiltenergy.energy.EnergyUnit;
+import team.voided.quiltenergy.energy.IEnergyContainer;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class EnergizedBlockEntity extends BlockEntity {
 	private final IEnergyContainer container;

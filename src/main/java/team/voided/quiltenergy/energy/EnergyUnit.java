@@ -1,19 +1,23 @@
-package me.voided.quiltenergy.energy;
+package team.voided.quiltenergy.energy;
 
-import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
+import team.voided.quiltenergy.HSV;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 
 import java.util.Objects;
 
 public class EnergyUnit {
 	private final double value;
-	private final Identifier id;
-	private final Text name;
+	private final ResourceLocation id;
+	private final Component name;
 
-	public EnergyUnit(double value, Identifier id, Text name) {
+	private final HSV energyBarColor;
+
+	public EnergyUnit(double value, ResourceLocation id, Component name, HSV energyBarColor) {
 		this.value = value;
 		this.id = id;
 		this.name = name;
+		this.energyBarColor = energyBarColor;
 	}
 
 	public double convertTo(EnergyUnit other, double amount) {
@@ -28,12 +32,16 @@ public class EnergyUnit {
 		return value;
 	}
 
-	public Identifier id() {
+	public ResourceLocation id() {
 		return id;
 	}
 
-	public Text getName() {
+	public Component getName() {
 		return name;
+	}
+
+	public HSV getEnergyBarColor() {
+		return energyBarColor;
 	}
 
 	@Override

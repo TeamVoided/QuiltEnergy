@@ -1,9 +1,9 @@
-package me.voided.quiltenergy.energy;
+package team.voided.quiltenergy.energy;
 
-import me.voided.quiltenergy.energy.interaction.EnergyInteractionResult;
-import me.voided.quiltenergy.item.EnergizedItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtCompound;
+import team.voided.quiltenergy.energy.interaction.EnergyInteractionResult;
+import team.voided.quiltenergy.item.EnergizedItem;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.item.ItemStack;
 
 public class EnergyContainer implements IEnergyContainer {
 	private final EnergyUnit unit;
@@ -86,13 +86,13 @@ public class EnergyContainer implements IEnergyContainer {
 	}
 
 	@Override
-	public void writeNBT(NbtCompound compound, String prefix) {
+	public void writeNBT(CompoundTag compound, String prefix) {
 		compound.putDouble(prefix + "_stored_energy", stored);
 		compound.putBoolean(prefix + "_can_receive", canReceive);
 	}
 
 	@Override
-	public void readNBT(NbtCompound compound, String prefix) {
+	public void readNBT(CompoundTag compound, String prefix) {
 		stored = compound.getDouble(prefix + "_stored_energy");
 		canReceive = compound.getBoolean(prefix + "_can_receive");
 	}

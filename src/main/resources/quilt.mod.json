@@ -19,7 +19,8 @@
 		},
 		"intermediate_mappings": "net.fabricmc:intermediary",
 		"entrypoints": {
-			"init": "me.deathlord.quiltenergy.QuiltEnergy"
+			"init": "team.voided.quiltenergy.QuiltEnergy",
+			"client_init": "team.voided.quiltenergy.client.QuiltEnergyClient"
 		},
 		"depends": [
 			{
