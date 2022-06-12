@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 public class QuiltEnergy implements ModInitializer {
 
-	public static final Logger LOGGER = LoggerFactory.getLogger("Fabric Energy");
+	public static final Logger LOGGER = LoggerFactory.getLogger("Quilt Energy");
 	public static final String MOD_ID = "quilt_energy";
 
 	@Override
