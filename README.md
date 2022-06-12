@@ -3,7 +3,7 @@
 A Library mod to make an energy api for (Ender put "four" here ☠️) TeamVoided's mods
 <br><br>
 
-Quilt Energy is a Minecraft modding api (Not developed by the Quilt devs) that adds energy to game in a way that allows for multiple energy units.
+Quilt Energy is a Minecraft modding api (Not developed by the Quilt devs nor has any associations with them) that adds energy to game in a way that allows for multiple energy units.
 <br><br>
 Quilt Energy has extendable classes for making items that have energy as well as block entities.
 
