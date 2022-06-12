@@ -49,7 +49,7 @@ public class EnergizedItem extends Item {
 	@Override
 	@ParametersAreNonnullByDefault
 	public Optional<TooltipComponent> getTooltipImage(ItemStack stack) {
-		return Optional.of(EnergyBarTooltip.fromEnergizedItem(stack));
+		return Optional.of(EnergyBarTooltipData.fromEnergizedItem(stack));
 	}
 	*/
 

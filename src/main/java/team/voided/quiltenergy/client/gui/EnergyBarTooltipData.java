@@ -5,18 +5,18 @@ import net.minecraft.world.item.ItemStack;
 import team.voided.quiltenergy.energy.EnergyUnit;
 import team.voided.quiltenergy.item.EnergizedItem;
 
-public class EnergyBarTooltip implements TooltipComponent {
+public class EnergyBarTooltipData implements TooltipComponent {
 	private final float percentFull;
 	private final EnergyUnit unit;
 
-	public EnergyBarTooltip(float percentFull, EnergyUnit unit) {
+	public EnergyBarTooltipData(float percentFull, EnergyUnit unit) {
 		this.percentFull = percentFull;
 		this.unit = unit;
 	}
 
-	public static EnergyBarTooltip fromEnergizedItem(ItemStack stack) {
+	public static EnergyBarTooltipData fromEnergizedItem(ItemStack stack) {
 		if (stack.getItem() instanceof EnergizedItem item) {
-			return new EnergyBarTooltip(getFractionForDisplay(item, stack), item.getUnit(stack));
+			return new EnergyBarTooltipData(getFractionForDisplay(item, stack), item.getUnit(stack));
 		}
 		throw new IllegalStateException("Item is not of type \"EnergizedItem\"");
 	}

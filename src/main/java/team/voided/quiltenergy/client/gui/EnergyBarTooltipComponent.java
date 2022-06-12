@@ -21,14 +21,14 @@ public class EnergyBarTooltipComponent implements ClientTooltipComponent {
 
 	private int totalWidth;
 
-	public EnergyBarTooltipComponent(EnergyBarTooltip component) {
+	public EnergyBarTooltipComponent(EnergyBarTooltipData component) {
 		this.percentFull = component.getPercentFull();
 		this.unit = component.getUnit();
 	}
 
 	@Nullable
 	public static ClientTooltipComponent tryConvert(TooltipComponent component) {
-		if (component instanceof EnergyBarTooltip t)
+		if (component instanceof EnergyBarTooltipData t)
 			return new EnergyBarTooltipComponent(t);
 
 		return null;
