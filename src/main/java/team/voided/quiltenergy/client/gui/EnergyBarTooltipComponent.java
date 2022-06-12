@@ -1,14 +1,14 @@
 package team.voided.quiltenergy.client.gui;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import team.voided.quiltenergy.HSV;
-import team.voided.quiltenergy.energy.EnergyUnit;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
+import team.voided.quiltenergy.HSV;
+import team.voided.quiltenergy.energy.EnergyUnit;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;

@@ -1,9 +1,9 @@
 package team.voided.quiltenergy.energy;
 
-import team.voided.quiltenergy.energy.interaction.EnergyInteractionResult;
-import team.voided.quiltenergy.item.EnergizedItem;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
+import team.voided.quiltenergy.energy.interaction.EnergyInteractionResult;
+import team.voided.quiltenergy.item.EnergizedItem;
 
 public class EnergyContainer implements IEnergyContainer {
 	private final EnergyUnit unit;

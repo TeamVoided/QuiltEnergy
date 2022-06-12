@@ -1,14 +1,11 @@
 package team.voided.quiltenergy;
 
-import team.voided.quiltenergy.energy.EnergyUnits;
-import team.voided.quiltenergy.item.EnergizedItem;
-import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import team.voided.quiltenergy.energy.EnergyUnits;
 
 public class QuiltEnergy implements ModInitializer {
 

@@ -1,10 +1,10 @@
 package team.voided.quiltenergy.energy;
 
+import net.minecraft.core.Registry;
+import net.minecraft.network.chat.Component;
 import team.voided.quiltenergy.HSV;
 import team.voided.quiltenergy.QuiltEnergy;
 import team.voided.quiltenergy.registry.EnergyRegistries;
-import net.minecraft.core.Registry;
-import net.minecraft.network.chat.Component;
 
 public final class EnergyUnits {
 	public static final EnergyUnit REDSTONE_FLUX = new EnergyUnit(1.0D, QuiltEnergy.modLoc("redstone_flux_unit"), Component.translatable("quilt_energy.unit.redstone_flux"), new HSV(0, 100, 100));

@@ -1,8 +1,8 @@
 package team.voided.quiltenergy.energy;
 
-import team.voided.quiltenergy.HSV;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import team.voided.quiltenergy.HSV;
 
 import java.util.Objects;
 

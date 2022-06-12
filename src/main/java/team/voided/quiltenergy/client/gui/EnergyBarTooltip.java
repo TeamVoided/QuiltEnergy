@@ -1,9 +1,9 @@
 package team.voided.quiltenergy.client.gui;
 
-import team.voided.quiltenergy.energy.EnergyUnit;
-import team.voided.quiltenergy.item.EnergizedItem;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.ItemStack;
+import team.voided.quiltenergy.energy.EnergyUnit;
+import team.voided.quiltenergy.item.EnergizedItem;
 
 public class EnergyBarTooltip implements TooltipComponent {
 	private final float percentFull;
