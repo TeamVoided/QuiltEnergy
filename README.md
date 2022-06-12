@@ -1,3 +1,3 @@
 # QuiltEnergy
 
-A Library mod to make an energy api four our mods
+A Library mod to make an energy api for our mods
