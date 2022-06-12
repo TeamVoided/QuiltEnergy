@@ -4,9 +4,7 @@
   "package": "team.voided.quiltenergy.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [],
-  "client": [
-    "client.ScreenMixin"
-  ],
+  "client": [],
   "injectors": {
     "defaultRequire": 1
 	}

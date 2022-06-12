@@ -46,11 +46,15 @@ public class EnergizedItem extends Item {
 		}
 	}
 
+	/*
+	Quilt API is broken
+
 	@Override
 	@ParametersAreNonnullByDefault
 	public Optional<TooltipComponent> getTooltipImage(ItemStack stack) {
 		return Optional.of(EnergyBarTooltip.fromEnergizedItem(stack));
 	}
+	*/
 
 	@Override
 	@ParametersAreNonnullByDefault
