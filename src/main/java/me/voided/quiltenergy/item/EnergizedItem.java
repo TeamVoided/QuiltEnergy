@@ -1,10 +1,10 @@
-package me.deathlord.quiltenergy.item;
+package me.voided.quiltenergy.item;
 
-import me.deathlord.quiltenergy.QuiltEnergy;
-import me.deathlord.quiltenergy.energy.EnergyUnit;
-import me.deathlord.quiltenergy.energy.IEnergyContainer;
-import me.deathlord.quiltenergy.energy.interaction.EnergyInteractionResult;
-import me.deathlord.quiltenergy.registry.EnergyRegistries;
+import me.voided.quiltenergy.QuiltEnergy;
+import me.voided.quiltenergy.energy.EnergyUnit;
+import me.voided.quiltenergy.energy.IEnergyContainer;
+import me.voided.quiltenergy.energy.interaction.EnergyInteractionResult;
+import me.voided.quiltenergy.registry.EnergyRegistries;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;

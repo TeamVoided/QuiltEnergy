@@ -1,7 +1,7 @@
 {
 	"schema_version": 1,
 	"quilt_loader": {
-		"group": "me.deathlord",
+		"group": "me.voided",
 		"id": "quilt_energy",
 		"version": "${version}",
 		"metadata": {

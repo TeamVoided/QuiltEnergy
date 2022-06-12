@@ -1,4 +1,4 @@
-package me.deathlord.quiltenergy.energy;
+package me.voided.quiltenergy.energy;
 
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;

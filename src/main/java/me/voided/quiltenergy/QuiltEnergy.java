@@ -1,6 +1,6 @@
-package me.deathlord.quiltenergy;
+package me.voided.quiltenergy;
 
-import me.deathlord.quiltenergy.energy.EnergyUnits;
+import me.voided.quiltenergy.energy.EnergyUnits;
 import net.minecraft.util.Identifier;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;

@@ -1,5 +1,5 @@
-package me.deathlord.quiltenergy.energy.interaction;
+package me.voided.quiltenergy.energy.interaction;
 
-import me.deathlord.quiltenergy.energy.EnergyUnit;
+import me.voided.quiltenergy.energy.EnergyUnit;
 
 public record EnergyInteractionResult(EnergyUnit unit, double originalAmount, double newAmount, boolean succeeded) { }

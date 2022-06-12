@@ -1,7 +1,7 @@
-package me.deathlord.quiltenergy.energy;
+package me.voided.quiltenergy.energy;
 
-import me.deathlord.quiltenergy.QuiltEnergy;
-import me.deathlord.quiltenergy.registry.EnergyRegistries;
+import me.voided.quiltenergy.QuiltEnergy;
+import me.voided.quiltenergy.registry.EnergyRegistries;
 import net.minecraft.text.Text;
 import net.minecraft.util.registry.Registry;
 

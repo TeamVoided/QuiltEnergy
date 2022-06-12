@@ -1,8 +1,8 @@
-package me.deathlord.quiltenergy.block.entity;
+package me.voided.quiltenergy.block.entity;
 
-import me.deathlord.quiltenergy.energy.EnergyContainer;
-import me.deathlord.quiltenergy.energy.EnergyUnit;
-import me.deathlord.quiltenergy.energy.IEnergyContainer;
+import me.voided.quiltenergy.energy.EnergyContainer;
+import me.voided.quiltenergy.energy.EnergyUnit;
+import me.voided.quiltenergy.energy.IEnergyContainer;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;

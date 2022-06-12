@@ -1,7 +1,7 @@
-package me.deathlord.quiltenergy.registry;
+package me.voided.quiltenergy.registry;
 
-import me.deathlord.quiltenergy.QuiltEnergy;
-import me.deathlord.quiltenergy.energy.EnergyUnit;
+import me.voided.quiltenergy.QuiltEnergy;
+import me.voided.quiltenergy.energy.EnergyUnit;
 import net.fabricmc.fabric.api.event.registry.FabricRegistryBuilder;
 import net.minecraft.util.registry.Registry;
 

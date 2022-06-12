@@ -1,7 +1,7 @@
-package me.deathlord.quiltenergy.energy;
+package me.voided.quiltenergy.energy;
 
-import me.deathlord.quiltenergy.energy.interaction.EnergyInteractionResult;
-import me.deathlord.quiltenergy.item.EnergizedItem;
+import me.voided.quiltenergy.energy.interaction.EnergyInteractionResult;
+import me.voided.quiltenergy.item.EnergizedItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 
