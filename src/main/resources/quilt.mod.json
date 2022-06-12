@@ -15,7 +15,7 @@
 				"issues": "https://github.com/TeamVoided/QuiltEnergy/issues",
 				"sources": "https://github.com/TeamVoided/QuiltEnergy"
 			},
-			"icon": "assets/example_mod/icon.png"
+			"icon": "assets/quilt_energy/icon.png"
 		},
 		"intermediate_mappings": "net.fabricmc:intermediary",
 		"entrypoints": {
