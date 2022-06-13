@@ -77,11 +77,11 @@ public class EnergyContainer implements IEnergyContainer {
 	@Override
 	public <T extends IEnergizedItem> void transferEnergy(T other, ItemStack stack, double amount, Operation operation) {
 		if (operation == Operation.RECEIVE) {
-			this.addEnergy(other.getUnit(stack).convertTo(this.unit, amount));
-			other.removeEnergy(stack, this.unit.convertTo(other.getUnit(stack), amount));
+			this.addEnergy(other.getUnit().convertTo(this.unit, amount));
+			other.removeEnergy(stack, this.unit.convertTo(other.getUnit(), amount));
 		} else {
-			this.removeEnergy(other.getUnit(stack).convertTo(this.unit, amount));
-			other.addEnergy(stack, this.unit.convertTo(other.getUnit(stack), amount));
+			this.removeEnergy(other.getUnit().convertTo(this.unit, amount));
+			other.addEnergy(stack, this.unit.convertTo(other.getUnit(), amount));
 		}
 	}
 

@@ -16,7 +16,7 @@ public class EnergyBarTooltipData implements TooltipComponent {
 
 	public static EnergyBarTooltipData fromEnergizedItem(ItemStack stack) {
 		if (stack.getItem() instanceof EnergizedItem item) {
-			return new EnergyBarTooltipData(getFractionForDisplay(item, stack), item.getUnit(stack));
+			return new EnergyBarTooltipData(getFractionForDisplay(item, stack), item.getUnit());
 		}
 		throw new IllegalStateException("Item is not of type \"EnergizedItem\"");
 	}
