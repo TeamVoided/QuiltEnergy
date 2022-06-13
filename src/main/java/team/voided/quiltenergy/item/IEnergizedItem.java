@@ -6,14 +6,14 @@ import team.voided.quiltenergy.energy.IEnergyContainer;
 import team.voided.quiltenergy.energy.interaction.EnergyInteractionResult;
 
 public interface IEnergizedItem {
-	void setUnit(ItemStack stack, EnergyUnit unit);
-	EnergyUnit getUnit(ItemStack stack);
+	void setUnit(EnergyUnit unit);
+	EnergyUnit getUnit();
 	void setMaxCapacity(ItemStack stack, double maxCapacity);
 	double getMaxCapacity(ItemStack stack);
 	double getStored(ItemStack stack);
 	EnergyInteractionResult setStored(ItemStack stack, double amount);
 	EnergyInteractionResult addEnergy(ItemStack stack, double amount);
 	EnergyInteractionResult removeEnergy(ItemStack stack, double amount);
-	void transferEnergy(ItemStack self, ItemStack other, double amount, IEnergyContainer.Operation operation);
+	<T extends IEnergizedItem> void transferEnergy(ItemStack self, T otherClass, ItemStack otherStack, double amount, IEnergyContainer.Operation operation);
 	void transferEnergy(ItemStack self, IEnergyContainer other, double amount, IEnergyContainer.Operation operation);
 }
