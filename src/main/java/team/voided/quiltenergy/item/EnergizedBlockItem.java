@@ -5,10 +5,11 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.Nullable;
 import team.voided.quiltenergy.QuiltEnergy;
 import team.voided.quiltenergy.energy.EnergyUnit;
@@ -19,13 +20,13 @@ import team.voided.quiltenergy.registry.EnergyRegistries;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
-public class EnergizedItem extends Item implements IEnergizedItem {
+public class EnergizedBlockItem extends BlockItem implements IEnergizedItem {
 	private EnergyUnit unit;
 	private double maxCapacity;
 	private final double preStoredEnergy;
 
-	public EnergizedItem(Properties properties, EnergyUnit unit, double maxCapacity, double preStoredEnergy) {
-		super(properties);
+	public EnergizedBlockItem(Block block, Properties properties, EnergyUnit unit, double maxCapacity, double preStoredEnergy) {
+		super(block, properties);
 		this.unit = unit;
 		this.maxCapacity = maxCapacity;
 		this.preStoredEnergy = preStoredEnergy;
