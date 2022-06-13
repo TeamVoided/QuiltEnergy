@@ -3,7 +3,7 @@ package team.voided.quiltenergy.energy;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import team.voided.quiltenergy.energy.interaction.EnergyInteractionResult;
-import team.voided.quiltenergy.item.EnergizedItem;
+import team.voided.quiltenergy.item.IEnergizedItem;
 
 public class EnergyContainer implements IEnergyContainer {
 	private final EnergyUnit unit;
@@ -75,7 +75,7 @@ public class EnergyContainer implements IEnergyContainer {
 	}
 
 	@Override
-	public <T extends EnergizedItem> void transferEnergy(T other, ItemStack stack, double amount, Operation operation) {
+	public <T extends IEnergizedItem> void transferEnergy(T other, ItemStack stack, double amount, Operation operation) {
 		if (operation == Operation.RECEIVE) {
 			this.addEnergy(other.getUnit(stack).convertTo(this.unit, amount));
 			other.removeEnergy(stack, this.unit.convertTo(other.getUnit(stack), amount));
