@@ -6,7 +6,6 @@ import team.voided.quiltenergy.energy.IEnergyContainer;
 import team.voided.quiltenergy.energy.interaction.EnergyInteractionResult;
 
 public interface IEnergizedItem {
-	boolean setVars(ItemStack stack);
 	void setUnit(ItemStack stack, EnergyUnit unit);
 	EnergyUnit getUnit(ItemStack stack);
 	void setMaxCapacity(ItemStack stack, double maxCapacity);

@@ -4,7 +4,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -52,26 +51,6 @@ public class EnergizedItem extends Item implements IEnergizedItem {
 		return Optional.of(EnergyBarTooltipData.fromEnergizedItem(stack));
 	}
 	*/
-
-	@Override
-	@ParametersAreNonnullByDefault
-	public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean selected) {
-		if (setVars(stack)) {
-			setUnit(stack, unit);
-			setMaxCapacity(stack, maxCapacity);
-			setStored(stack, preStoredEnergy);
-			QuiltEnergy.LOGGER.info("updated vars");
-		}
-	}
-
-	@Override
-	public boolean setVars(ItemStack stack) {
-		boolean ret = !stack.getOrCreateTag().contains("set_vars");
-
-		if (ret) stack.getOrCreateTag().putBoolean("set_vars", false);
-
-		return ret || stack.getOrCreateTag().getBoolean("set_vars");
-	}
 
 	@Override
 	public void setUnit(ItemStack stack, EnergyUnit unit) {
