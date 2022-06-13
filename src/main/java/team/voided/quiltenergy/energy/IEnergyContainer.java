@@ -12,7 +12,7 @@ public interface IEnergyContainer {
 	double stored();
 	double maxCapacity();
 	boolean canReceive();
-	boolean canReceive(boolean canReceive);
+	boolean setReceivability(boolean canReceive);
 
 	EnergyInteractionResult addEnergy(double amount);
 	EnergyInteractionResult removeEnergy(double amount);

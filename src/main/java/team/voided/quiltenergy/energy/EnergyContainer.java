@@ -38,7 +38,7 @@ public class EnergyContainer implements IEnergyContainer {
 	}
 
 	@Override
-	public boolean canReceive(boolean canReceive) {
+	public boolean setReceivability(boolean canReceive) {
 		this.canReceive = canReceive;
 		return this.canReceive;
 	}
