@@ -22,7 +22,7 @@ public class EnergyBarTooltipData implements TooltipComponent {
 	}
 
 	public static float getFractionForDisplay(EnergizedItem item, ItemStack stack) {
-		return (float) (item.getStored(stack) / item.getMaxCapacity(stack));
+		return (float) (item.getStored(stack) / item.getMaxCapacity());
 	}
 
 	public float getPercentFull() {

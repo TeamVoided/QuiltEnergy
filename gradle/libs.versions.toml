@@ -4,7 +4,7 @@ minecraft = "1.19"
 quilt_mappings = "1.19-rc2+build.6"
 quilt_loader = "0.17.0"
 
-quilted_fabric_api = "2.0.0-alpha.2+0.55.3-1.19"
+quilted_fabric_api = "2.0.0-alpha.4+0.56.1-1.19"
 
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }

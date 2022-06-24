@@ -5,9 +5,8 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
 import net.minecraft.client.renderer.entity.ItemRenderer;
-import net.minecraft.util.Mth;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
-import team.voided.quiltenergy.HSV;
+import team.voided.quiltenergy.RGB;
 import team.voided.quiltenergy.energy.EnergyUnit;
 
 import javax.annotation.Nullable;
@@ -61,10 +60,11 @@ public class EnergyBarTooltipComponent implements ClientTooltipComponent {
 
 		int barWidth = (int) Math.ceil(totalWidth * percentFull);
 
-		HSV color = unit.getEnergyBarColor();
+		RGB color = unit.getEnergyBarColor();
+		int colorCode = ((color.red()&0x0ff)<<16)|((color.green()&0x0ff)<<8)|(color.blue()&0x0ff);
 
 		GuiComponent.fill(ps, mouseX - 1, mouseY - height - offsetFromBox -1, mouseX + totalWidth + 1, mouseY - offsetFromBox, 0xFF000000);
-		GuiComponent.fill(ps, mouseX, mouseY - height - offsetFromBox, mouseX + barWidth, mouseY - offsetFromBox, Mth.hsvToRgb(color.hue(), color.saturation(), color.value()));
+		GuiComponent.fill(ps, mouseX, mouseY - height - offsetFromBox, mouseX + barWidth, mouseY - offsetFromBox, 0xFF000000 | colorCode);
 		GuiComponent.fill(ps, mouseX + barWidth, mouseY - height - offsetFromBox, mouseX + totalWidth, mouseY - offsetFromBox, 0xFF555555);
 
 		mouseX = mouseY = 0;

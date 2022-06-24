@@ -8,8 +8,8 @@ import team.voided.quiltenergy.energy.interaction.EnergyInteractionResult;
 public interface IEnergizedItem {
 	void setUnit(EnergyUnit unit);
 	EnergyUnit getUnit();
-	void setMaxCapacity(ItemStack stack, double maxCapacity);
-	double getMaxCapacity(ItemStack stack);
+	void setMaxCapacity(double maxCapacity);
+	double getMaxCapacity();
 	double getStored(ItemStack stack);
 	EnergyInteractionResult setStored(ItemStack stack, double amount);
 	EnergyInteractionResult addEnergy(ItemStack stack, double amount);

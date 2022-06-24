@@ -12,7 +12,6 @@ import team.voided.quiltenergy.client.gui.EnergyBarTooltipComponent;
 
 import java.util.List;
 
-// disabled, quilt api is broken
 @Mixin(Screen.class)
 public class ScreenMixin {
 

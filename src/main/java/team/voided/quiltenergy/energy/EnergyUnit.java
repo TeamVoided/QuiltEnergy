@@ -2,7 +2,7 @@ package team.voided.quiltenergy.energy;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import team.voided.quiltenergy.HSV;
+import team.voided.quiltenergy.RGB;
 
 import java.util.Objects;
 
@@ -11,9 +11,9 @@ public class EnergyUnit {
 	private final ResourceLocation id;
 	private final Component name;
 
-	private final HSV energyBarColor;
+	private final RGB energyBarColor;
 
-	public EnergyUnit(double value, ResourceLocation id, Component name, HSV energyBarColor) {
+	public EnergyUnit(double value, ResourceLocation id, Component name, RGB energyBarColor) {
 		this.value = value;
 		this.id = id;
 		this.name = name;
@@ -40,7 +40,7 @@ public class EnergyUnit {
 		return name;
 	}
 
-	public HSV getEnergyBarColor() {
+	public RGB getEnergyBarColor() {
 		return energyBarColor;
 	}
 
