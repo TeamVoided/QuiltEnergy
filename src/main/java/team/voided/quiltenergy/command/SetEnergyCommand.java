@@ -39,7 +39,7 @@ public class SetEnergyCommand {
 				return 0;
 			}
 
-			item.setStored(stackInHand, energy);
+			item.setEnergy(stackInHand, energy);
 		}
 
 		source.getSource().sendSuccess(Component.translatable("commands.set.energy.success", formatDouble(energy, 64), players.size()), true);

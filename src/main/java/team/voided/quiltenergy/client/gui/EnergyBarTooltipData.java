@@ -16,13 +16,13 @@ public class EnergyBarTooltipData implements TooltipComponent {
 
 	public static EnergyBarTooltipData fromEnergizedItem(ItemStack stack) {
 		if (stack.getItem() instanceof EnergizedItem item) {
-			return new EnergyBarTooltipData(getFractionForDisplay(item, stack), item.getUnit());
+			return new EnergyBarTooltipData(getFractionForDisplay(item, stack), item.unit());
 		}
-		throw new IllegalStateException("Item is not of type \"EnergizedItem\"");
+		throw new IllegalStateException("Item is not of type \"IEnergizedItem\"");
 	}
 
 	public static float getFractionForDisplay(EnergizedItem item, ItemStack stack) {
-		return (float) (item.getStored(stack) / item.getMaxCapacity());
+		return (float) (item.stored(stack) / item.getMaxCapacity());
 	}
 
 	public float getPercentFull() {

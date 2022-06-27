@@ -13,10 +13,10 @@ public class EnergyUnit {
 
 	private final RGB energyBarColor;
 
-	public EnergyUnit(double value, ResourceLocation id, Component name, RGB energyBarColor) {
+	public EnergyUnit(double value, ResourceLocation id, RGB energyBarColor) {
 		this.value = value;
 		this.id = id;
-		this.name = name;
+		this.name = Component.translatable(id.getNamespace() + ".unit." + id.getPath());
 		this.energyBarColor = energyBarColor;
 	}
 

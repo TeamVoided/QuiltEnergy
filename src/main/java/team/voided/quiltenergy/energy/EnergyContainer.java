@@ -1,9 +1,12 @@
 package team.voided.quiltenergy.energy;
 
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import team.voided.quiltenergy.energy.interaction.EnergyInteractionResult;
 import team.voided.quiltenergy.item.IEnergizedItem;
+
+import java.util.List;
 
 public class EnergyContainer implements IEnergyContainer {
 	private final EnergyUnit unit;
@@ -64,6 +67,15 @@ public class EnergyContainer implements IEnergyContainer {
 	}
 
 	@Override
+	public EnergyInteractionResult setEnergy(double amount) {
+		double originalAmount = stored;
+
+		stored = amount;
+
+		return new EnergyInteractionResult(unit, originalAmount, stored, true);
+	}
+
+	@Override
 	public void transferEnergy(IEnergyContainer other, double amount, Operation operation) {
 		if (operation == Operation.RECEIVE) {
 			this.addEnergy(other.unit().convertTo(this.unit, amount));
@@ -77,11 +89,34 @@ public class EnergyContainer implements IEnergyContainer {
 	@Override
 	public <T extends IEnergizedItem> void transferEnergy(T other, ItemStack stack, double amount, Operation operation) {
 		if (operation == Operation.RECEIVE) {
-			this.addEnergy(other.getUnit().convertTo(this.unit, amount));
-			other.removeEnergy(stack, this.unit.convertTo(other.getUnit(), amount));
+			this.addEnergy(other.unit().convertTo(this.unit, amount));
+			other.removeEnergy(stack, this.unit.convertTo(other.unit(), amount));
 		} else {
-			this.removeEnergy(other.getUnit().convertTo(this.unit, amount));
-			other.addEnergy(stack, this.unit.convertTo(other.getUnit(), amount));
+			this.removeEnergy(other.unit().convertTo(this.unit, amount));
+			other.addEnergy(stack, this.unit.convertTo(other.unit(), amount));
+		}
+	}
+
+	@Override
+	public void equalizeWith(List<IEnergyContainer> containers, List<Pair<IEnergizedItem, ItemStack>> stacks) {
+		double total = EnergyUnits.RAW_ENERGY.convertFrom(unit, stored);
+
+		for (IEnergyContainer container : containers) {
+			total += EnergyUnits.RAW_ENERGY.convertFrom(container.unit(), container.stored());
+		}
+
+		for (Pair<IEnergizedItem, ItemStack> item : stacks) {
+			total += EnergyUnits.RAW_ENERGY.convertFrom(item.getFirst().unit(), item.getFirst().stored(item.getSecond()));
+		}
+
+		double set = total / (containers.size() + stacks.size());
+
+		for (IEnergyContainer container : containers) {
+			container.setEnergy(container.unit().convertFrom(EnergyUnits.RAW_ENERGY, set));
+		}
+
+		for (Pair<IEnergizedItem, ItemStack> item : stacks) {
+			item.getFirst().setEnergy(item.getSecond(), item.getFirst().unit().convertFrom(EnergyUnits.RAW_ENERGY, set));
 		}
 	}
 
