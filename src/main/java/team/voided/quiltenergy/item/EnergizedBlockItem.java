@@ -55,7 +55,7 @@ public class EnergizedBlockItem extends BlockItem implements IEnergizedItem {
 	@Override
 	@ParametersAreNonnullByDefault
 	public Optional<TooltipComponent> getTooltipImage(ItemStack stack) {
-		return Optional.of(EnergyBarTooltipData.fromEnergizedItem(stack));
+		return Optional.ofNullable(EnergyBarTooltipData.fromEnergizedItem(stack));
 	}
 
 
