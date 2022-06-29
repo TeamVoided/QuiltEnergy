@@ -27,6 +27,7 @@ public class EnergyBarTooltipComponent implements ClientTooltipComponent {
 
 	@Nullable
 	public static ClientTooltipComponent tryConvert(TooltipComponent component) {
+		if (component == null) return null;
 		if (component instanceof EnergyBarTooltipData t)
 			return new EnergyBarTooltipComponent(t);
 
