@@ -28,7 +28,7 @@ repositories {
 ```groovy
 dependencies {
     modImplementation "team.voided:quilt_energy:VERSION"
-    // latest release is 1.0.6+1.19
+    // latest release is 1.1.2+1.19
 }
 ```
 
