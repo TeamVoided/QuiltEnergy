@@ -47,7 +47,7 @@ public class EnergizedItem extends Item implements IEnergizedItem {
 	@Override
 	@ParametersAreNonnullByDefault
 	public Optional<TooltipComponent> getTooltipImage(ItemStack stack) {
-		return Optional.ofNullable(EnergyBarTooltipData.fromEnergizedItem(stack));
+		return EnergyBarTooltipData.fromEnergizedItem(stack);
 	}
 
 

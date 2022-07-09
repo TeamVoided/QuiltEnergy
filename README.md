@@ -18,6 +18,7 @@ repositories {
         url = uri("https://maven.pkg.github.com/TeamVoided/QuiltEnergy")
         credentials {
             username = "GITHUB_USERNAME"
+            //feel free to replace "TOKEN" with whatever environment variable you might have your token saved in
             password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
         }
     }
@@ -28,7 +29,7 @@ repositories {
 ```groovy
 dependencies {
     modImplementation "team.voided:quilt_energy:VERSION"
-    // latest release is 1.1.2+1.19
+    // latest release is 1.2.0+1.19
 }
 ```
 
