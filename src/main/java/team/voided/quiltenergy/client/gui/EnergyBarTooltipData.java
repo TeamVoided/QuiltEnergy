@@ -3,7 +3,7 @@ package team.voided.quiltenergy.client.gui;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.ItemStack;
 import team.voided.quiltenergy.energy.EnergyUnit;
-import team.voided.quiltenergy.item.EnergizedItem;
+import team.voided.quiltenergy.item.IEnergizedItem;
 
 import java.util.Optional;
 
@@ -17,13 +17,13 @@ public class EnergyBarTooltipData implements TooltipComponent {
 	}
 
 	public static Optional<TooltipComponent> fromEnergizedItem(ItemStack stack) {
-		if (stack.getItem() instanceof EnergizedItem item) {
+		if (stack.getItem() instanceof IEnergizedItem item) {
 			return Optional.of(new EnergyBarTooltipData(getFractionForDisplay(item, stack), item.unit()));
 		}
 		return Optional.empty();
 	}
 
-	public static float getFractionForDisplay(EnergizedItem item, ItemStack stack) {
+	public static float getFractionForDisplay(IEnergizedItem item, ItemStack stack) {
 		return (float) (item.stored(stack) / item.getMaxCapacity());
 	}
 
