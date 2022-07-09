@@ -4,7 +4,7 @@
   "quilt_energy.energyitem.stored": "Stored Energy: %s",
   "quilt_energy.item.shift_to_expand": "Press \"Shift\" for additional information!",
   "quilt_energy.unit.redstone_flux": "Redstone Flux (RF)",
-  "quilt_energy.unit.quilt_energy": "Quilt Energy (QE)",
+  "quilt_energy.unit.quilt_energy_unit": "Quilt Energy (QE)",
   "commands.set.energy.not_energized_item": "The item %s is holding is not energized",
   "commands.set.energy.success": "Successfully set energy to %s for %s players"
 }
