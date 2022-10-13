@@ -13,6 +13,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 import team.voided.quiltenergy.item.IEnergizedItem;
+import team.voided.quiltenergy.numerics.Decimal;
 
 import java.util.Collection;
 
@@ -39,7 +40,7 @@ public class SetEnergyCommand {
 				return 0;
 			}
 
-			item.setEnergy(stackInHand, energy);
+			item.setEnergy(stackInHand, new Decimal(((Double) energy).toString()));
 		}
 
 		source.getSource().sendSuccess(Component.translatable("commands.set.energy.success", formatDouble(energy, 64), players.size()), true);

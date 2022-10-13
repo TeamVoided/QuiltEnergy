@@ -5,24 +5,25 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import team.voided.quiltenergy.energy.interaction.EnergyInteractionResult;
 import team.voided.quiltenergy.item.IEnergizedItem;
+import team.voided.quiltenergy.numerics.Decimal;
 
 import java.util.List;
 
 public interface IEnergyContainer {
 	EnergyUnit unit();
 
-	double stored();
-	double maxCapacity();
+	Decimal stored();
+	Decimal maxCapacity();
 	boolean canReceive();
 	boolean setReceivability(boolean canReceive);
 
-	EnergyInteractionResult addEnergy(double amount);
-	EnergyInteractionResult removeEnergy(double amount);
+	EnergyInteractionResult addEnergy(Decimal amount);
+	EnergyInteractionResult removeEnergy(Decimal amount);
 
-	EnergyInteractionResult setEnergy(double amount);
+	EnergyInteractionResult setEnergy(Decimal amount);
 
-	void transferEnergy(IEnergyContainer other, double amount, Operation operation);
-	<T extends IEnergizedItem> void transferEnergy(T other, ItemStack stack, double amount, Operation operation);
+	void transferEnergy(IEnergyContainer other, Decimal amount, Operation operation);
+	<T extends IEnergizedItem> void transferEnergy(T other, ItemStack stack, Decimal amount, Operation operation);
 
 	void equalizeWith(List<IEnergyContainer> containers, List<Pair<IEnergizedItem, ItemStack>> stacks);
 

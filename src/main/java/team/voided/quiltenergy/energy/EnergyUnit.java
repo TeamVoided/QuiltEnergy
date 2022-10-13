@@ -3,32 +3,33 @@ package team.voided.quiltenergy.energy;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import team.voided.quiltenergy.RGB;
+import team.voided.quiltenergy.numerics.Decimal;
 
 import java.util.Objects;
 
 public class EnergyUnit {
-	private final double value;
+	private final Decimal value;
 	private final ResourceLocation id;
 	private final Component name;
 
 	private final RGB energyBarColor;
 
-	public EnergyUnit(double value, ResourceLocation id, RGB energyBarColor) {
+	public EnergyUnit(Decimal value, ResourceLocation id, RGB energyBarColor) {
 		this.value = value;
 		this.id = id;
 		this.name = Component.translatable(id.getNamespace() + ".unit." + id.getPath());
 		this.energyBarColor = energyBarColor;
 	}
 
-	public double convertTo(EnergyUnit other, double amount) {
-		return amount * (this.value / other.value());
+	public Decimal convertTo(EnergyUnit other, Decimal amount) {
+		return amount.multiply(this.value.divide(other.value(), false), false);
 	}
 
-	public double convertFrom(EnergyUnit other, double amount) {
+	public Decimal convertFrom(EnergyUnit other, Decimal amount) {
 		return other.convertTo(this, amount);
 	}
 
-	public double value() {
+	public Decimal value() {
 		return value;
 	}
 
@@ -49,7 +50,7 @@ public class EnergyUnit {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		EnergyUnit that = (EnergyUnit) o;
-		return Double.compare(that.value, value) == 0 && Objects.equals(id, that.id);
+		return value.equals(that.value) && Objects.equals(id, that.id);
 	}
 
 	@Override

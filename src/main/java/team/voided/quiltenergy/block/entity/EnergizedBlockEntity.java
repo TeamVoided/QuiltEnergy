@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import team.voided.quiltenergy.energy.EnergyContainer;
 import team.voided.quiltenergy.energy.EnergyUnit;
 import team.voided.quiltenergy.energy.IEnergyContainer;
+import team.voided.quiltenergy.numerics.Decimal;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +26,7 @@ public class EnergizedBlockEntity extends BlockEntity {
 		}
 	}
 
-	public EnergizedBlockEntity(BlockEntityType<?> blockEntityType, BlockPos blockPos, BlockState blockState, EnergyUnit unit, double maxCapacity, Direction... energyTransferAllowed) {
+	public EnergizedBlockEntity(BlockEntityType<?> blockEntityType, BlockPos blockPos, BlockState blockState, EnergyUnit unit, Decimal maxCapacity, Direction... energyTransferAllowed) {
 		super(blockEntityType, blockPos, blockState);
 		this.container = new EnergyContainer(unit, maxCapacity);
 		defaultAllow();

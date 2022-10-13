@@ -3,6 +3,7 @@
   "quilt_energy.energyitem.max_capacity": "Max Capacity: %s",
   "quilt_energy.energyitem.stored": "Stored Energy: %s",
   "quilt_energy.item.shift_to_expand": "Press \"Shift\" for additional information!",
+  "quilt_energy.unit.raw_energy": "Raw Energy (RE)",
   "quilt_energy.unit.redstone_flux": "Redstone Flux (RF)",
   "quilt_energy.unit.quilt_energy_unit": "Quilt Energy (QE)",
   "commands.set.energy.not_energized_item": "The item %s is holding is not energized",
