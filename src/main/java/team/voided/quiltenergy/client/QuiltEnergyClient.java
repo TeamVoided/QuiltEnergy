@@ -13,5 +13,6 @@ public class QuiltEnergyClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient(ModContainer mod) {
 		TooltipComponentCallback.EVENT.register(EnergyBarTooltipComponent::tryConvert);
+		System.out.println("cool");
 	}
 }

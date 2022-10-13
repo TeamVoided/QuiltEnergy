@@ -72,13 +72,11 @@ public class Decimal extends Number implements Comparable<Decimal> {
 	}
 
 	public Decimal divide(String val, boolean set) {
-		divide(val, set, RoundingMode.UNNECESSARY);
-		return this;
+		return divide(val, set, RoundingMode.UNNECESSARY);
 	}
 
 	public Decimal divide(Decimal val, boolean set) {
-		divide(val, set, RoundingMode.UNNECESSARY);
-		return this;
+		return divide(val, set, RoundingMode.UNNECESSARY);
 	}
 
 	public Decimal divide(String val, boolean set, RoundingMode rm) {

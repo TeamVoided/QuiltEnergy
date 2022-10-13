@@ -29,21 +29,32 @@ public class SetEnergyCommand {
 	}
 
 	private static int setEnergy(CommandContext<CommandSourceStack> source) throws CommandSyntaxException {
+		System.out.println("Getting players");
 		Collection<ServerPlayer> players = EntityArgument.getPlayers(source, "targets");
+		System.out.println("Got Players");
+		System.out.println("Getting Double");
 		double energy = DoubleArgumentType.getDouble(source, "energy");
+		System.out.println("Got Double");
 
 		for (ServerPlayer player : players) {
+			System.out.println("Getting stack in hand");
 			ItemStack stackInHand = player.getItemInHand(InteractionHand.MAIN_HAND);
+			System.out.println("Got stack in hand");
 
 			if (!(stackInHand.getItem() instanceof IEnergizedItem item)) {
+				System.out.println("Not Energized Item");
 				source.getSource().sendFailure(Component.translatable("commands.set.energy.not_energized_item", player.getName().getString()));
 				return 0;
 			}
 
+			System.out.println("setting energy");
 			item.setEnergy(stackInHand, new Decimal(((Double) energy).toString()));
+			System.out.println("set energy");
 		}
 
+		System.out.println("sending success message");
 		source.getSource().sendSuccess(Component.translatable("commands.set.energy.success", formatDouble(energy, 64), players.size()), true);
+		System.out.println("Sent Success message");
 
 		return 1;
 	}

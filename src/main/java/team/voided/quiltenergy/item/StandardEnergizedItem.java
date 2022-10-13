@@ -41,6 +41,10 @@ public interface StandardEnergizedItem extends IEnergizedItem {
 
 	@Override
 	default Decimal stored(ItemStack stack) {
+		if (!stack.getOrCreateTag().contains("stored")) {
+			Decimal.NBTHelper.writeToCompound(stack.getOrCreateTag(), "stored", new Decimal("0"));
+		}
+
 		return Decimal.NBTHelper.readFromCompound(stack.getOrCreateTag(), "stored");
 	}
 
@@ -48,7 +52,8 @@ public interface StandardEnergizedItem extends IEnergizedItem {
 	default EnergyInteractionResult setEnergy(ItemStack stack, Decimal amount) {
 		Decimal original = stored(stack);
 
-		if (amount.compareTo(getMaxCapacity()) > 0) return new EnergyInteractionResult(unit(), original, original, false);
+		if (amount.lessThan(new Decimal("0"))) return new EnergyInteractionResult(unit(), original, original, false);
+		if (amount.greaterThan(getMaxCapacity())) return new EnergyInteractionResult(unit(), original, original, false);
 
 		Decimal.NBTHelper.writeToCompound(stack.getOrCreateTag(), "stored", amount);
 		return new EnergyInteractionResult(unit(), original, amount, true);
